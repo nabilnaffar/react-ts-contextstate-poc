@@ -8,6 +8,7 @@ export type PlansWithStore = InjectedStore<InnerAppState> & PlansProps;
 
 export class Plans extends React.Component<PlansWithStore> {
     render() {
+        console.log('rendering Plans component...');
         return (
             <div>Plans total price: {JSON.stringify(this.props.store.appShell.totalPrice.value)}</div>
         )

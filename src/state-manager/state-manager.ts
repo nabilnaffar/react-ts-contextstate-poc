@@ -6,6 +6,7 @@ export class ExistingStateManager {
     set(key: string, value: object) {
         if(this.onSet) {
             const [namespace, subKey] = key.split(':');
+            console.warn(`---CHANGING THE STORE ${namespace}:${subKey}: `, value);
             this.onSet(namespace, subKey, value);
         }
     }

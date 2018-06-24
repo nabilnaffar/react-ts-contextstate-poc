@@ -13,18 +13,31 @@ export type DevicesWithStore = InjectedStore<InnerAppState> & DevicesProps;
 export class Devices extends React.Component<DevicesWithStore> {
     constructor(props: DevicesWithStore) {
         super(props);
-        this.onClick = this.onClick.bind(this);
+        this.appShellChange = this.appShellChange.bind(this);
+        this.wirelessChange = this.wirelessChange.bind(this);
     }
-    onClick() {
+
+    shouldComponentUpdate(nextProps: DevicesWithStore) {
+        // don't render if it's not affecting this tree ?
+        return nextProps.store.appShell.totalPrice.value !== this.props.store.appShell.totalPrice.value
+    }
+
+    appShellChange() {
         // existing solution
         stateManager.set('appShell:totalPrice', {value: Math.random()});
     }
+    wirelessChange() {
+        // existing solution
+        stateManager.set('wireless:plan', {total: Math.random()});
+    }
 
     render() {
+        console.log('rendering Devices component...');
         return (
             <div>
                 <div>Devices Value is: {JSON.stringify(this.props.store.appShell.totalPrice.value)}</div>
-                <button type="button" onClick={this.onClick}>CHANGE</button>
+                <button type="button" onClick={this.appShellChange}>change appshell</button>
+                <button type="button" onClick={this.wirelessChange}>change wireless</button>
             </div>
         )
     }
