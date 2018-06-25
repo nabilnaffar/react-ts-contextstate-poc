@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { stateManager } from './state-manager';
+import devtools, { ReduxDevtoolsInstance } from './devtools';
 
 export const {Provider, Consumer} = React.createContext({});
 
@@ -18,7 +19,7 @@ export type Dictionary<T = object> = T & {
 }
 
 export interface StoreProviderProps {
-    initialState: Dictionary
+    initialState: Dictionary,
 }
 
 export class StoreProvider extends React.Component<StoreProviderProps, Dictionary>{
@@ -26,12 +27,16 @@ export class StoreProvider extends React.Component<StoreProviderProps, Dictionar
         ...this.props.initialState
     }
 
+    private devTools: ReduxDevtoolsInstance;
+
     constructor(props: StoreProviderProps) {
         super(props);
         stateManager.registerSet(this.onStateChange.bind(this));
+        this.devTools = devtools(props, this);
     }
 
     onStateChange(namespace: string, key: string, value: object) {
+        this.devTools(`${namespace}:${key}`, value);
         this.setState((prevState) => ({
             [namespace]: {
                 ...prevState[namespace],
