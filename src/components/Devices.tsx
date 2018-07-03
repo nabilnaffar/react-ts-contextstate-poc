@@ -4,9 +4,7 @@ import { withStore } from '../state-manager/withStore';
 import { stateManager } from '../state-manager/state-manager';
 import { InnerAppState } from '../models/inner-state.model';
 
-export interface DevicesProps {
-
-}
+export interface DevicesProps {}
 
 export type DevicesWithStore = InjectedStore<InnerAppState> & DevicesProps;
 
@@ -17,27 +15,27 @@ export class Devices extends React.Component<DevicesWithStore> {
         this.wirelessChange = this.wirelessChange.bind(this);
     }
 
-    shouldComponentUpdate(nextProps: DevicesWithStore) {
-        // don't render if it's not affecting this tree ?
-        return nextProps.store.appShell.totalPrice.value !== this.props.store.appShell.totalPrice.value
-    }
-
     appShellChange() {
         // existing solution
-        stateManager.set('appShell:totalPrice', {value: Math.random()});
+        stateManager.set('appShell:totalPrice', {value: this.props.store.appShell.totalPrice.value + 1});
     }
     wirelessChange() {
         // existing solution
-        stateManager.set('wireless:plan', {total: Math.random()});
+        stateManager.set('wireless:plans', {total: this.props.store.wireless.plans.total + 1});
     }
 
     render() {
         console.log('rendering Devices component...');
         return (
-            <div>
-                <div>Devices Value is: {JSON.stringify(this.props.store.appShell.totalPrice.value)}</div>
-                <button type="button" onClick={this.appShellChange}>change appshell</button>
-                <button type="button" onClick={this.wirelessChange}>change wireless</button>
+            <div style={{border: '1px solid #9082ff', height: '200px'}}>
+                <div>Devices component</div>
+                <div>appshell totalPrice: {this.props.store.appShell.totalPrice.value}</div>
+                <button type="button" onClick={this.appShellChange}>
+                    change appshell {this.props.store.appShell.totalPrice.value}
+                </button>
+                <button type="button" onClick={this.wirelessChange}>
+                    change wireless {this.props.store.wireless.plans.total}
+                </button>
             </div>
         )
     }

@@ -10,7 +10,10 @@ export class Plans extends React.Component<PlansWithStore> {
     render() {
         console.log('rendering Plans component...');
         return (
-            <div>Plans total price: {JSON.stringify(this.props.store.appShell.totalPrice.value)}</div>
+            <div style={{border: '1px solid #ff8282', height: '200px'}}>
+                <div>Plans component</div>
+                <div>appshell totalPrice: {this.props.store.appShell.totalPrice.value}</div>
+            </div>
         )
     }
 }
