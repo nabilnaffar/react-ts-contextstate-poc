@@ -1,16 +1,14 @@
 export interface AppShellModel {
-    appShell: {
-        totalPrice: {
-            value: number
-        }
+    totalPrice: {
+        value: number
     }
 }
 
 
 export const initialState: AppShellModel  = {
-    appShell: {
-        totalPrice: {
-            value: 0
-        }
+    totalPrice: {
+        value: 0
     }
 }
+
+export const storeName = 'appShell';

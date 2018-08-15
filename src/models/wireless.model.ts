@@ -1,15 +1,14 @@
+
 export interface WirelessModel {
-    wireless: {
-        plans: {
-            total: number
-        }
+    plans: {
+        total: number;
     }
 }
 
 export const initialState: WirelessModel  = {
-    wireless: {
-        plans: {
-            total: 0
-        }
+    plans: {
+        total: 0
     }
 }
+
+export const storeName = 'wireless';
