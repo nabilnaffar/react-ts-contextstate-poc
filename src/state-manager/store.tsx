@@ -8,9 +8,9 @@ export type DeepReadonly<T> = {
     readonly [K in keyof T]: DeepReadonly<T[K]>;
 }
 
-export interface InjectedStore<T = object> {
-    store: DeepReadonly<Dictionary<T>>
-}
+// export interface InjectedStore<T = object> {
+//     store: DeepReadonly<Dictionary<T>>
+// }
 
 export type Primitive = string | number | boolean;
 
