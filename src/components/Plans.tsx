@@ -3,7 +3,7 @@ import * as React from 'react';
 import { withStore } from '../state-manager/withStore';
 import { InnerAppState } from '../models/inner-state.model';
 
-export interface PlansProps {}
+export interface PlansProps { title: string }
 export type PlansWithStore = InjectedProps & PlansProps;
 
 export class Plans extends React.Component<PlansWithStore> {
@@ -11,7 +11,7 @@ export class Plans extends React.Component<PlansWithStore> {
         console.log('rendering Plans component...');
         return (
             <div style={{border: '1px solid #ff8282', height: '200px'}}>
-                <div>Plans component</div>
+                <div>{this.props.title}</div>
                 <div>appshell totalPrice: {this.props.shellTotalPrice}</div>
             </div>
         )

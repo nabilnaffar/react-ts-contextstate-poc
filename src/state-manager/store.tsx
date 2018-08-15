@@ -4,9 +4,9 @@ import devtools, { ReduxDevtoolsInstance } from './devtools';
 
 export const {Provider, Consumer} = React.createContext({});
 
-export type DeepReadonly<T> = {
-    readonly [K in keyof T]: DeepReadonly<T[K]>;
-}
+// export type DeepReadonly<T> = {
+//     readonly [K in keyof T]: DeepReadonly<T[K]>;
+// }
 
 // export interface InjectedStore<T = object> {
 //     store: DeepReadonly<Dictionary<T>>

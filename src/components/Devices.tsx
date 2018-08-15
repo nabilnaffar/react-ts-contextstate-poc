@@ -49,7 +49,6 @@ interface InjectedProps {
 const mapStateToProps = (state: InnerAppState) => ({
     totalPlans: state.wireless.plans.total,
     totalPrice: state.appShell.totalPrice.value,
-
 })
 const DevicesWithStore = withStore<InnerAppState, DevicesProps, InjectedProps>(mapStateToProps)(Devices);
 export default DevicesWithStore;

@@ -11,8 +11,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <StoreProvider initialState={initialState}>
-          <DevicesWithStore />
-          <PlansWithStore />
+          <DevicesWithStore  />
+          <PlansWithStore title="Plans Component!"/>
         </StoreProvider>
       </div>
     );
